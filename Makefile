@@ -13,12 +13,12 @@ endif
 ifeq ($(SIMJECT),1)
 export NO_CEPHEI = 1
 export NO_ROCKETBOOTSTRAP = 1
-export TARGET = simulator:clang:14.5:8.0
-export ARCHS = x86_64 i386
+export TARGET = simulator:clang:14.5:13.0
+export ARCHS = x86_64 arm64
 else
-export PREFIX = $(THEOS)/toolchain/Xcode11.xctoolchain/usr/bin/
-export TARGET = iphone:clang:14.4:8.0
-export ARCHS = armv7 armv7s arm64 arm64e
+export PREFIX = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/
+export TARGET = iphone:clang:14.5:13.0
+export ARCHS = arm64 arm64e
 endif
 
 ifeq ($(NO_DEPENDENCIES),1)
@@ -44,4 +44,4 @@ SUBPROJECTS += Preferences
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 after-install::
-	install.exec "killall -9 MobileSafari"
+	install.exec "killall -9 MobileSafari SpringBoard backboardd"

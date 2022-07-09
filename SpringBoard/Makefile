@@ -11,8 +11,9 @@ ifeq ($(NO_ROCKETBOOTSTRAP),0)
 SafariPlusSB_LIBRARIES += rocketbootstrap
 endif
 
+SafariPlusSB_CFLAGS += -include SpringBoard.pch
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::
 	echo make finish
-	install.exec "killall -9 SpringBoard"
+	install.exec "killall -9 SpringBoard backboardd"

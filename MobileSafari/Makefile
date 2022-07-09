@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = SafariPlus
-SafariPlus_CFLAGS = -fobjc-arc -I$(INCLUDES) -Wno-deprecated-declarations -Wno-unguarded-availability-new -Wno-unused-variable
+SafariPlus_CFLAGS = -fobjc-arc -I$(INCLUDES) -Wno-deprecated-declarations -Wno-unguarded-availability-new -Wno-unused-variable -Wno-unused-but-set-variable
 SafariPlus_FILES = Util.xm Init.xm Undirector.xmi
 SafariPlus_FILES += $(wildcard Hooks/*.xm Classes/*.mm Classes/*.xm ../Shared/*.mm)
 SafariPlus_EXTRA_FRAMEWORKS += CydiaSubstrate
@@ -33,6 +33,7 @@ dir_string := @"\"$(CURDIR)\""
 SafariPlus_CFLAGS += -D SIMJECT=1 -D CUR_DIR=$(dir_string)
 endif
 
+SafariPlus_CFLAGS += -include MobileSafari.pch
 SafariPlus_LIBRARIES += objc
 SafariPlus_FRAMEWORKS = UIKit CoreFoundation Foundation AVKit
 SafariPlus_PRIVATE_FRAMEWORKS = MobileIcons

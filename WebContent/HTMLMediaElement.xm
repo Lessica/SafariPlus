@@ -97,7 +97,7 @@ void WebCore_HTMLMediaElement_loadResource(WebCore::HTMLMediaElement* self, cons
 
 	@autoreleasepool
 	{
-		NSString* URLString = initialURL;
+		NSString* URLString = initialURL.string();
 
 		if(![URLString isEqualToString:@""])
 		{

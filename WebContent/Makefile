@@ -1,7 +1,8 @@
 include $(THEOS)/makefiles/common.mk
 
-#WebKit from https://webkit.org/build-archives/
-WEBKIT_ROOT = /Users/opa334/WebKit
+# Find history version of precompiled WebKit
+# https://github.com/Lessica/WebKitBuildArchives
+WEBKIT_ROOT = ../WebKitArchive/274758/Release-iphonesimulator
 
 TWEAK_NAME = SafariPlusWC
 
@@ -14,6 +15,8 @@ SafariPlusWC_EXTRA_FRAMEWORKS += CydiaSubstrate
 SafariPlusWC_CFLAGS += -D SIMJECT=1
 endif
 
+SafariPlusWC_CFLAGS += -include WebContent.pch
+SafariPlusWC_CCFLAGS += -include WebContent.pch
 SafariPlusWC_PRIVATE_FRAMEWORKS = WebCore JavaScriptCore
 
 include $(THEOS_MAKE_PATH)/tweak.mk
